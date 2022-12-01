@@ -11,6 +11,9 @@ on:
 jobs:
     #Download/create
     CoverageReport:
+      environment:
+        name: github-pages
+        url: ${{ steps.deployment.outputs.page_url }}
       runs-on: ubuntu-latest
       steps:
         - name: checkout
@@ -21,6 +24,8 @@ jobs:
           run: |
             pwd
             ls -la || true
+            echo ${{ steps.deployment.outputs.page_url }} || true
+            echo ${{ env.url }} || true
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@v4
           with:
