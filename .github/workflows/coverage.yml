@@ -13,6 +13,14 @@ jobs:
     CoverageReport:
       runs-on: ubuntu-latest
       steps:
+        - name: checkout
+          uses: actions/checkout@v3
+          with:
+            fetch-depth: 0
+        - name: show content
+          run: |
+            pwd
+            ls -la || true
         - name: Deploy
           uses: JamesIves/github-pages-deploy-action@v4
           with:
