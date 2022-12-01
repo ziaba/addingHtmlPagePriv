@@ -1,0 +1,19 @@
+name: generate report
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+    #Download/create
+    CoverageReport:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Deploy
+          uses: JamesIves/github-pages-deploy-action@v4
+          with:
+            folder: coverage
